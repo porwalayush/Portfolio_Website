@@ -1,5 +1,4 @@
-
-{% load static %}
+{% load static %}  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +12,7 @@
 
   <!-- Favicons -->
   <link href="{%static 'assets/img/face.svg' %}" rel="icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -65,6 +65,13 @@
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+              {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
     <div class="hero-container" data-aos="fade-in">
       <h1>Ayush Porwal</h1>
       <p>I'm <span class="typed" data-typed-items="Python Developer,Competetive Programmer"></span></p>
@@ -210,7 +217,7 @@
 
         <div class="section-title">
           <h2>Resume</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+<!--           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
 
         <div class="row">
@@ -336,21 +343,17 @@
             <div class="info">
               <br/>
               <br/>
-              <br/>
-              <br/>
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
                 <p>226/2,Tilak Nagar,Auraiya,Uttar Pradesh,India (206122)</p>
               </div>
-                            <br/>
               <br/>
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
                 <p>ayushporwal3843@gmail.com</p>
               </div>
-                            <br/>
               <br/>
               <div class="phone">
                 <i class="bi bi-phone"></i>
@@ -362,7 +365,7 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{% url 'connect' %}" method="POST">{% csrf_token %}
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -382,9 +385,6 @@
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
               <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
@@ -411,9 +411,11 @@
   <script src="{%static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{%static 'assets/vendor/typed.js/typed.min.js' %}"></script>
   <script src="{%static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
-
   <!-- Template Main JS File -->
   <script src="{%static 'assets/js/main.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 
